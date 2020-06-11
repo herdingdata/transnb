@@ -1,0 +1,6 @@
+-r _base.txt
+
+black
+coverage
+pytest
+flake8>=3.8.3

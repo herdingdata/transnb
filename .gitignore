@@ -1,0 +1,10 @@
+*.pyc
+.idea
+_build/
+.DS_Store
+__pycache__
+.pytest_cache/
+.mypy_cache/
+pip-wheel-metadata/
+*.egg-info/
+*.DS_Store

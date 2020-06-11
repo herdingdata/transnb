@@ -1,5 +1,7 @@
 import click
 
+from transnb import messages
+
 
 @click.command()
 def tweet() -> None:
@@ -8,6 +10,10 @@ def tweet() -> None:
 
 
 @click.command()
-def all() -> None:
-    """Print all available messages."""
-    print("do something")
+def all_messages() -> list:
+    return all()
+
+
+def all():
+    """all available messages"""
+    return [m for m in messages.MESSAGES]

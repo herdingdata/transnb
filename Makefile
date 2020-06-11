@@ -52,5 +52,9 @@ format: requirements
 
 
 .PHONY: test
-test: requirements lint check-format
+test: requirements lint check-format unittest
+
+
+.PHONY: unittest
+unittest: requirements
 	pytest $(SRCPATH) # --cov

@@ -1,3 +1,5 @@
+import secrets
+
 from dataclasses import dataclass
 
 
@@ -232,3 +234,11 @@ def get_all_messages() -> tuple:
             for sub in substitutions:
                 messages.append(msg_template.text.format(s=sub))
     return tuple(messages)
+
+
+def get_random_message() -> str:
+    return secrets.choice(get_all_messages())
+
+
+if __name__ == "__main__":
+    print(get_random_message())

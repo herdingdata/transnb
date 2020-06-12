@@ -2,21 +2,23 @@
 # Trans & NB Solidarity bot
 
 A bot which sends messages of love and solidarity to our
-trans and nonbinary friends in the LGBTQ+ community.
+trans and non-binary friends in the LGBTQ+ community.
 
-The code behind [@transnb](https://twitter.com/transnb)
+This repo is the code which powers [@transnb](https://twitter.com/transnb)
 
-Project created by [Andy Herd](https://herdingdata.co.uk) (twitter [@herdingdata](https://twitter.com/herdingdata))
+Project created with love by [Andy Herd](https://herdingdata.co.uk) (twitter [@herdingdata](https://twitter.com/herdingdata))
 
 The beautiful bot logo was created by [@smolrobots](https://twitter.com/smolrobots)
 
 ## First time setup (development)
-Make a virtual environment with python 3.8. Then:
 ```
+# Create virtualenv with py3.8 (your command may vary)
+mkvirtualenv transnb -p /usr/local/bin/python3.8
+
 # Create credentials file
 cp src/settings_local.py src/settings.py
 
-# Then put the auth details into src/settings.py from https://developer.twitter.com/en/apps
+# Then put the auth details into src/settings.py
 vi src/settings.py
 
 make setup
@@ -42,3 +44,8 @@ transnb-tweet
 # Show all the messages
 transnb-all
 ```
+
+## Other stuff
+Message for future Andy: you'll probably need these links the next time you look at this project.
+- http://docs.tweepy.org/en/latest/api.html#api-reference
+- https://developer.twitter.com/en/apps

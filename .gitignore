@@ -8,3 +8,4 @@ __pycache__
 pip-wheel-metadata/
 *.egg-info/
 *.DS_Store
+*settings.py

@@ -7,15 +7,15 @@ from transnb.time import do_i_post_a_tweet
 
 
 def _do_tweet():
-    # msg = messages.get_random_message()
-    msg = "Hello, world"  # debug
-    click.echo(msg)
-
     if do_i_post_a_tweet() is True:
+        msg = messages.get_random_message()
+        click.echo(msg)
         auth = tweepy.OAuthHandler(s.API_KEY, s.API_SECRET_KEY)
         auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
         api.update_status(msg)
+    else:
+        click.echo("skipped posting a tweet this time round")
 
 
 @click.command()

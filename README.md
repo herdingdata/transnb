@@ -13,19 +13,21 @@ The beautiful bot logo was created by [@smolrobots](https://twitter.com/smolrobo
 ## First time setup (development)
 Make a virtual environment with python 3.8. Then:
 ```
-make setup
-make install-git-hooks
-```
-## First time setup (server)
-On a server which you want to post tweets regularly:
-
-```
 # Create credentials file
 cp src/settings_local.py src/settings.py
 
 # Then put the auth details into src/settings.py from https://developer.twitter.com/en/apps
 vi src/settings.py
 
+make setup
+make install-git-hooks
+make test
+```
+
+## First time setup (server)
+Do the steps above on a server which you want to post tweets regularly. Then:
+
+```
 # Open the crontab in edit mode
 crontab -e
 

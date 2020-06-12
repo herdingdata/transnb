@@ -1,0 +1,7 @@
+#!/bin/sh
+if ! make check-format; then
+    echo "***********FORMATTING CHECK FAILED************"
+    echo "***************COMMIT ABORTED*****************"
+    echo "To fix run: make format, and add any changed files"
+    exit 1
+fi

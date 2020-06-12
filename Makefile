@@ -58,3 +58,11 @@ test: requirements lint check-format unittest
 .PHONY: unittest
 unittest: requirements
 	pytest $(SRCPATH) # --cov
+
+
+.PHONY: install-git-hooks
+install-git-hooks: $(CURDIR)/.git/hooks/pre-commit
+
+
+$(CURDIR)/.git/hooks/%: $(CURDIR)/git_hooks/%
+	ln -s "$<" "$@"

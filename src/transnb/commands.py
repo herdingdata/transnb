@@ -11,9 +11,6 @@ def tweet() -> None:
 
 @click.command()
 def all_messages() -> list:
-    return all()
-
-
-def all():
     """all available messages"""
-    return [m for m in messages.MESSAGES]
+    for msg in messages.get_all_messages():
+        click.echo(msg)

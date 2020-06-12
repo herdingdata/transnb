@@ -21,6 +21,7 @@ $(BUILDPATH):
 	mkdir -p $(COVERAGEPATH)
 
 
+# --- Setup ---
 .PHONY: requirements
 requirements: $(REQUIREMENTS_RESULT)
 
@@ -34,6 +35,15 @@ $(REQUIREMENTS_RESULT): setup.py $(SRCPATH)/requirements/*.txt | build_dirs
 setup: clean requirements
 
 
+.PHONY: install-git-hooks
+install-git-hooks: $(CURDIR)/.git/hooks/pre-commit
+
+
+$(CURDIR)/.git/hooks/%: $(CURDIR)/git_hooks/%
+	ln -s "$<" "$@"
+
+
+# --- Formatting ---
 .PHONY: lint
 lint: requirements
 	flake8 $(SRCPATH) --tee --output $(BUILDPATH)/lint.txt
@@ -51,6 +61,7 @@ format: requirements
 	black $(SRCPATH)
 
 
+# --- Testing ---
 .PHONY: test
 test: requirements lint check-format unittest
 
@@ -60,9 +71,7 @@ unittest: requirements
 	pytest $(SRCPATH) # --cov
 
 
-.PHONY: install-git-hooks
-install-git-hooks: $(CURDIR)/.git/hooks/pre-commit
-
-
-$(CURDIR)/.git/hooks/%: $(CURDIR)/git_hooks/%
-	ln -s "$<" "$@"
+# --- Other stuff ---
+.PHONY: messages
+messages: requirements
+	transnb-all > src/transnb/tests/expected_message_list.txt

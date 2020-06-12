@@ -18,8 +18,8 @@ setup(
     install_requires=["click"],
     entry_points="""
         [console_scripts]
-        transnb-tweet=datapeek.commands:tweet
-        transnb-all=datapeek.commands:all
+        transnb-tweet=transnb.commands:tweet
+        transnb-all=transnb.commands:all_messages
     """,
     classifiers=[
         "Programming Language :: Python :: 3",

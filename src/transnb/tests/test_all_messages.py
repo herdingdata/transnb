@@ -12,6 +12,7 @@ def test__all_messages__match_expected():
     filepath = os.path.join(get_script_dir(), "expected_message_list.txt")
     with open(filepath, "r") as infile:
         expected_messages = [m for m in infile.read().split("\n")]
+    expected_messages = expected_messages[-1]  # ignore trailing newline
     result_messages = get_all_messages()
 
     for idx, expect_msg in enumerate(expected_messages):

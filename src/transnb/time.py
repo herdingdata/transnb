@@ -6,8 +6,8 @@ python src/transnb/time.py
 """
 import datetime as dt
 import secrets
-from statistics import mean
 from pprint import pprint as pp
+from statistics import mean
 
 from croniter import croniter
 
@@ -51,10 +51,11 @@ def analyse():
     tweets_per_day = {}
     for n in range(days_to_cycle_all):
         current_dt = (start_dt + dt.timedelta(n)).date()
-        tweets_per_day[current_dt.strftime('%Y-%m-%d')] = \
-            sum([1 for x in results if x[0].date() == current_dt and x[1] == True])
+        tweets_per_day[current_dt.strftime("%Y-%m-%d")] = sum(
+            [1 for x in results if x[0].date() == current_dt and x[1] is True]
+        )
     pp(tweets_per_day)
-    print(f'mean:{round(mean([v for v in tweets_per_day.values()]),2)})')
+    print(f"tweets_per_day:{round(mean([v for v in tweets_per_day.values()]),2)})")
 
 
 if __name__ == "__main__":

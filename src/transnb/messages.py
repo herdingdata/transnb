@@ -34,12 +34,15 @@ CIS = ("cis", "cisgender")
 FACETS = ("gender", "genitals", "sexuality")
 JOB_AREAS = ("hiring", "training", "facilities")
 NB = ("NB", "non-binary")
+GENDERED_FEATURES = ("a dress", "makeup", "trousers")
 MESSAGES = (
     #
     # Simple truths
     #
     Msg("Trans {s} are {s}.", GENDER_PLURALS),
     Msg("Trans {s} are human beings.", GENDER_PLURALS),
+    Msg("Your gender identity is valid."),
+    Msg("The only person who gets to choose your gender identity is you."),
     Msg("You've met a trans {s} without realising that they're trans.", SINGULAR_PRONOUNS),
     Msg(
         "You've met a trans {s} without realising that they're trans. They were probably really nice to you.",
@@ -80,6 +83,9 @@ MESSAGES = (
     Msg("Some of your colleagues are probably {s}", CATEGORIES),
     Msg("Some of your friends are probably {s}", CATEGORIES),
     Msg("Some of your family are probably {s}", CATEGORIES),
+    Msg("{s} people have all the fun", CATEGORIES),
+    Msg("The T in LGBTQ stands for Trans."),
+    Msg("The T in LGBTQ stands for Trans. Please don't forget that. Thank you."),
     #
     # NB facts
     #
@@ -104,6 +110,11 @@ MESSAGES = (
     Msg("Pets don't care about your {s}.", FACETS),
     Msg("Some {s} people don't like hugs.", CATEGORIES),
     Msg("Some {s} people would like a hug right now.", CATEGORIES),
+    Msg("Many {s} people just want to love and be loved.", CATEGORIES),
+    Msg(
+        "Many people don’t mind which gender you are. We just wanna go about our business and be nice to everyone."
+        "It would be nice if there are more people like that."
+    ),
     #
     # Rest of LGBTQ+ community
     #
@@ -201,6 +212,14 @@ MESSAGES = (
         "person very happy if you politely interject to point out the mistake. Thank you.",
         CATEGORIES,
     ),
+    Msg(
+        "It’s ok to ask someone “what would you like me to call you?” if you’re not sure. "
+        "But be polite about it please. Thank you."
+    ),
+    Msg(
+        "If you’ve wondered whether you might look good in {s} then you should probably give it a try.",
+        GENDERED_FEATURES,
+    ),
     #
     # Feminism
     #
@@ -221,6 +240,15 @@ MESSAGES = (
         "It's incredibly hard to find good trans-inclusive healthcare. "
         "If you'd like to understand how obscenely difficult it is, ask a trans person."
     ),
+    #
+    # Exploring
+    #
+    Msg("Exploring a different gender identity can be liberating."),
+    Msg("Embracing a new gender identity can be a lot of fun."),
+    #
+    # QTBIPOC
+    #
+    Msg("Black trans lives matter #BlackLivesMatter #BlackTransLivesMatter"),
 )
 
 

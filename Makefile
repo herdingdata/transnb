@@ -63,12 +63,17 @@ format: requirements
 
 # --- Testing ---
 .PHONY: test
-test: requirements lint check-format unittest
+test: requirements lint check-format unittest inttest
 
 
 .PHONY: unittest
 unittest: requirements
-	pytest $(SRCPATH) # --cov
+	pytest $(SRCPATH) --ignore=$(SRCPATH)/transnb/tests/test_integration.py
+
+
+.PHONY: inttest
+inttest: requirements
+	pytest $(SRCPATH)/transnb/tests/test_integration.py
 
 
 # --- Other stuff ---

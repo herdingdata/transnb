@@ -3,6 +3,7 @@ import tweepy
 
 import settings as s
 from transnb import messages
+from transnb.time import do_i_post_a_tweet
 
 
 def _do_tweet():
@@ -10,10 +11,11 @@ def _do_tweet():
     msg = "Hello, world"  # debug
     click.echo(msg)
 
-    auth = tweepy.OAuthHandler(s.API_KEY, s.API_SECRET_KEY)
-    auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
-    api = tweepy.API(auth)
-    api.update_status(msg)
+    if do_i_post_a_tweet() is True:
+        auth = tweepy.OAuthHandler(s.API_KEY, s.API_SECRET_KEY)
+        auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
+        api = tweepy.API(auth)
+        api.update_status(msg)
 
 
 @click.command()

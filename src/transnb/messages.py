@@ -26,7 +26,7 @@ SINGULAR_RELATIONS = (
     "father",
 )
 PLURAL_FAMILY_RELATIONS = ("siblings", "children")
-CATEGORIES = ("trans", "transgender", "nb", "non-binary")
+CATEGORIES = ("trans", "transgender", "non-binary")
 CATEGORIES_NO_NB = ("trans", "transgender", "non-binary")
 FEMINISM_WRONG = ("you've misunderstood feminism", "you're doing feminism wrong")
 NOT_WOMEN = ("are men", "have a penis", "aren't women", "are neither a man or a woman")
@@ -34,7 +34,6 @@ BODY_FEATURES = ("more hair", "less hair")
 CIS = ("cis", "cisgender")
 FACETS = ("gender", "genitals", "sexuality")
 JOB_AREAS = ("hiring", "training", "facilities")
-NB = ("NB", "non-binary")
 GENDERED_FEATURES = ("a dress", "makeup", "trousers")
 PRONOUNS = ("he/him/his", "she/her/hers", "they/them/theirs", "she/they", "he/they")
 NICE = ("fun", "pleasant")
@@ -139,10 +138,10 @@ MESSAGES = (
     # NB facts
     #
     Msg("Non-binary people are non-binary."),
-    Msg("NB is short for non-binary. Some people are non-binary."),
-    Msg("Some {s} people are neither male nor female.", NB),
+    Msg("Enby is short for non-binary, but only some non-binary people like the term."),
+    Msg("Some non-binary people are neither male nor female."),
     Msg("A non-binary person can still be a {s}.", SINGULAR_GENDER_PRONOUNS),
-    Msg("Some {s} people don’t think of themselves as either a man or a woman.", NB),
+    Msg("Some non-binary people don’t think of themselves as either a man or a woman."),
     Msg("Many (but not all) non-binary people like to be referred to as trans."),
     Msg("You've met a non-binary {s} without realising that they are non-binary.", SINGULAR_PRONOUNS),
     #
@@ -223,7 +222,7 @@ MESSAGES = (
     ),
     Msg(
         "If you have influence over {s} at your company and are open to making your  organisation "
-        "more inclusive then you should probably ask some trans & nb people for their ideas. "
+        "more inclusive then you should probably ask some trans & non-binary people for their ideas. "
         "Thank you.",
         JOB_AREAS,
     ),
@@ -241,8 +240,8 @@ MESSAGES = (
         "options then you can make a lot of people happy by fixing that. Please fix that. Thank you."
     ),
     Msg(
-        "If you like my tweets then you can tweet positive messages supporting trans & nb people, too. "
-        "There’s nothing stopping you. It might even help someone. That's kinda the point of this bot."
+        "If you like my tweets then you can tweet positive messages supporting trans & non-binary people, too. "
+        "There’s nothing stopping you. It might even help someone. (That's kinda the point of this bot)."
     ),
     #
     # Encouraging support

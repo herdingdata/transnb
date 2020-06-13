@@ -26,15 +26,6 @@ make install-git-hooks
 make test
 ```
 
-## First time setup (server)
-Do the steps above on a server which you want to post tweets regularly. Then:
-
-```
-# Open the crontab in edit mode
-crontab -e
-
-```
-
 ## Commands
 ```
 # Do a tweet of a randomly picked predefined message
@@ -94,5 +85,6 @@ make test
 # Open the crontab in edit mode
 crontab -e
 
+*/7 * * * * /path/to/.virtualenv/transnb/bin/transnb-tweet | logger
 
 ```

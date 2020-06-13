@@ -2,14 +2,13 @@ import click
 import tweepy
 
 import settings as s
-from transnb import messages
-from transnb.time import do_i_post_a_tweet
+from transnb import messages, time
 
 
 def _do_tweet(message: str):
     if message is None:
         message = messages.get_random_message()
-        do_a_post = do_i_post_a_tweet()
+        do_a_post = time.do_i_post_a_tweet()
     else:
         # we got a message override so let's just post it regardless of probability
         do_a_post = True
@@ -31,10 +30,16 @@ def tweet(*args, **kwargs) -> None:
 
 
 @click.command()
-def all_messages() -> list:
+def all_messages():
     """all available messages"""
     for msg in messages.get_all_messages():
         click.echo(msg)
+
+
+@click.command()
+def analyse():
+    """stats about how the app behaves"""
+    time.analyse()
 
 
 if __name__ == "__main__":

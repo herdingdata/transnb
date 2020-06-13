@@ -20,6 +20,7 @@ setup(
         [console_scripts]
         transnb-tweet=transnb.commands:tweet
         transnb-all=transnb.commands:all_messages
+        transnb-analyse=transnb.commands:analyse
     """,
     classifiers=[
         "Programming Language :: Python :: 3",

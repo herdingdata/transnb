@@ -32,7 +32,7 @@ def analyse():
     # assuming no duplicates, how long would it take to tweet everything?
     # obviously there are gonna be duplicates but this is a nice indication
     days_to_cycle_all = int(round(len(messages.get_all_messages()) / DESIRED_TWEETS_PER_DAY, 0))
-    print(f"all tweets will be gone in {days_to_cycle_all} days")
+    days_to_cycle_noadj = days_to_cycle_all
 
     # let's simulate that time period (plus a day for good measure)
     days_to_cycle_all += 1
@@ -48,14 +48,27 @@ def analyse():
         # print(f"{cron_dt}  post_tweet: {do_i_post_a_tweet()}")
 
     # how many tweets per day? 7ish is the goal (ballpark)
+    tweet_count = {}
     tweets_per_day = {}
     for n in range(days_to_cycle_all):
         current_dt = (start_dt + dt.timedelta(n)).date()
-        tweets_per_day[current_dt.strftime("%Y-%m-%d")] = sum(
-            [1 for x in results if x[0].date() == current_dt and x[1] is True]
-        )
-    pp(tweets_per_day)
-    print(f"tweets_per_day:{round(mean([v for v in tweets_per_day.values()]),2)})")
+        current_dt_str = current_dt.strftime("%Y-%m-%d")
+        tweets_per_day[current_dt_str] = sum([1 for x in results if x[0].date() == current_dt and x[1] is True])
+        for i in range(0, tweets_per_day[current_dt_str]):
+            msg = messages.get_random_message()
+            if msg in tweet_count:
+                tweet_count[msg] += 1
+            else:
+                tweet_count[msg] = 1
+
+    # pp(tweets_per_day)
+    print(f"tweets_per_day: {round(mean([v for v in tweets_per_day.values()]),2)}")
+    print(f"max tweets/day: {max([v for v in tweets_per_day.values()])}")
+    print(f"min tweets/day: {min([v for v in tweets_per_day.values()])}")
+    dupe_factor = round(mean([x for x in tweet_count.values()]), 2)
+    print(f"assuming no duplicates, all tweets will be gone in {days_to_cycle_noadj} days")
+    print(f"duplication factor: {dupe_factor}")
+    print(f"accounting for duplicates, all tweets will be gone in {days_to_cycle_all * dupe_factor} days")
 
 
 if __name__ == "__main__":

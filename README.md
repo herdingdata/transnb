@@ -31,6 +31,11 @@ make test
 # Do a tweet of a randomly picked predefined message
 transnb-tweet
 
+# Do a tweet and choose a specific message
+transnb-tweet -m "message goes here"
+# or
+transnb-tweet --message "message goes here"
+
 # Show all the messages
 transnb-all
 ```

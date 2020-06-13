@@ -6,22 +6,24 @@ from transnb import messages
 from transnb.time import do_i_post_a_tweet
 
 
-def _do_tweet():
+def _do_tweet(message: str):
     if do_i_post_a_tweet() is True:
-        msg = messages.get_random_message()
+        if message is None:
+            message = messages.get_random_message()
         click.echo(f"transnb-tweet:posted:{msg}")
         auth = tweepy.OAuthHandler(s.API_KEY, s.API_SECRET_KEY)
         auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
-        api.update_status(msg)
+        api.update_status(message)
     else:
         click.echo("transnb-tweet:skipped tweet")
 
 
 @click.command()
-def tweet() -> None:
+@click.option("-m", "--message", default=None)
+def tweet(*args, **kwargs) -> None:
     """Entry point for sending a tweet."""
-    _do_tweet()
+    _do_tweet(*args, **kwargs)
 
 
 @click.command()

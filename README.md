@@ -33,7 +33,6 @@ Do the steps above on a server which you want to post tweets regularly. Then:
 # Open the crontab in edit mode
 crontab -e
 
-TODO zomg there's more to figure out
 ```
 
 ## Commands
@@ -49,3 +48,51 @@ transnb-all
 Message for future Andy: you'll probably need these links the next time you look at this project.
 - http://docs.tweepy.org/en/latest/api.html#api-reference
 - https://developer.twitter.com/en/apps
+
+## Raspberry pi
+For making it run on a schedule.
+
+https://installvirtual.com/how-to-install-python-3-8-on-raspberry-pi-raspbian/
+
+```
+# prerequisites
+sudo apt-get update
+sudo apt-get install -y build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev tar wget vim
+
+# get python
+cd /home/USERNAMEHERE
+wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz
+sudo tar zxf Python-3.8.3.tgz
+
+# install
+cd Python-3.8.3
+sudo ./configure --enable-optimizations
+sudo make -j 4
+sudo make altinstall
+
+# tidy up
+cd ..
+sudo rm -rf Py*
+
+# virtualenv
+sudo python3.8 -m pip install virtualenvwrapper
+mkdir -p ~/.virtualenvs
+echo 'export WORKON_HOME=$HOME/.virtualenvs' >> ~/.bash_profile
+echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bash_profile
+source ~/.bash_profile
+
+# now our code
+git clone git@github.com:herdingdata/transnb.git
+cd transnb
+make setup
+# don't forget the credentials in settings.py
+
+make test
+
+
+
+# Open the crontab in edit mode
+crontab -e
+
+
+```

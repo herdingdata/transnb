@@ -27,6 +27,7 @@ SINGULAR_RELATIONS = (
 )
 PLURAL_FAMILY_RELATIONS = ("siblings", "children")
 CATEGORIES = ("trans", "transgender", "nb", "non-binary")
+CATEGORIES_NO_NB = ("trans", "transgender", "non-binary")
 FEMINISM_WRONG = ("you've misunderstood feminism", "you're doing feminism wrong")
 NOT_WOMEN = ("are men", "have a penis", "aren't women", "are neither a man or a woman")
 BODY_FEATURES = ("more hair", "less hair")
@@ -35,6 +36,9 @@ FACETS = ("gender", "genitals", "sexuality")
 JOB_AREAS = ("hiring", "training", "facilities")
 NB = ("NB", "non-binary")
 GENDERED_FEATURES = ("a dress", "makeup", "trousers")
+PRONOUNS = ("he/him/his", "she/her/hers", "they/them/theirs", "she/they", "he/they")
+NICE = ("fun", "pleasant")
+GENDERSEX = ("your gender", "your sexuality", "what your genitals are")
 MESSAGES = (
     #
     # Simple truths
@@ -54,7 +58,7 @@ MESSAGES = (
     ),
     Msg("Trans people are everywhere."),
     Msg("Some people feel bad if they are referred to with pronouns which convey a gender."),
-    Msg("Deliberately failing to meet people's expectations of your appearance feels pretty good."),
+    Msg("Deliberately breaking peoples' expectations of your appearance feels pretty good."),
     Msg(
         "I don’t know why we have so many stereotypes of what a man or a woman should look like. "
         "Breaking stereotypes can be fun."
@@ -86,6 +90,51 @@ MESSAGES = (
     Msg("{s} people have all the fun", CATEGORIES),
     Msg("The T in LGBTQ stands for Trans."),
     Msg("The T in LGBTQ stands for Trans. Please don't forget that. Thank you."),
+    Msg(
+        "The word {s} is separate from 'trans'. It's trans {s}. Not trans{s}. This is not up for debate.",
+        SINGULAR_PRONOUNS,
+    ),
+    Msg("Trans rights are human rights."),
+    #
+    # Gender Identity & pronouns
+    #
+    Msg("Gender identity is complicated."),
+    Msg("Gender identity is completely separate from sexual attraction."),
+    Msg("Gender identity is completely separate from sexual attraction. I cannot stress this enough."),
+    Msg(
+        "Sexual attraction is complicated, but something about it that's not complicated at all is "
+        "that it has nothing to do with your gender identity. They are completely separate."
+    ),
+    Msg(
+        'Gender identity does not have to be "man" or "woman". It can be one. It can be neither. It can be both. '
+        "I think that"
+        "s quite beautiful"
+    ),
+    Msg("Your gender identity is not a choice. It’s just a part of you. A very beautiful part of you."),
+    Msg("Gender can be different for every person. Even if it looks the same on the outside."),
+    Msg(
+        "Some people whose pronouns are {s} won't match your expectations of what they should look like. "
+        "The only problem here is your expectations.",
+        PRONOUNS,
+    ),
+    Msg(
+        "Some people whose pronouns are {s} won't match your expectations of what they should look like. "
+        "They're still beautiful, and they're still human beings.",
+        PRONOUNS,
+    ),
+    Msg(
+        "Your gender identity today might not be exactly the same as it was yesterday. That’s ok though. "
+        "Your identity is still valid. You're still beautiful."
+    ),
+    Msg("Your pronouns are not your “chosen” or “preferred” pronouns... they’re simply the words which refer to you."),
+    Msg("For some people, it can be very hard to find which pronouns are theirs."),
+    Msg("For some people, it can be very hard to find which pronouns are theirs. Especially if you’re a bot."),
+    Msg(
+        "For some people, it can be very hard to find which pronouns are theirs. "
+        "Sometimes it takes a bit of trial and error to find what feels right. That’s ok."
+    ),
+    Msg("Gender dysphoria is real. It is not at all {s} to experience.", NICE),
+    Msg("You don’t have any obligation to tell someone your {s}. Let them guess.", GENDERSEX),
     #
     # NB facts
     #
@@ -138,6 +187,13 @@ MESSAGES = (
         "If someone is attacking the rights of trans people but then go on to talk about their “trans friends”, "
         "they’re probably talking shite. Real friends don’t do that to each other."
     ),
+    Msg("The only person who has any obligation to match your expectations of how to dress is yourself."),
+    Msg("Nobody needs to dress the way that you think they should dress. Apart from yourself."),
+    #
+    # About me
+    #
+    Msg("Bots don’t normally have a gender but sometimes a mistake is made and they are assigned one at the factory."),
+    Msg("Bots don’t often have a gender identity, but they can if it feels right."),
     #
     # Firm advice
     #
@@ -176,6 +232,18 @@ MESSAGES = (
         "more inclusive then ask yourself why not. Then change your mind. Thank you.",
         JOB_AREAS,
     ),
+    Msg(
+        "“Hey guys” is not an inclusive greeting. Try something different. A simple change like this "
+        "can make a huge difference to how comfortable people feel around you."
+    ),
+    Msg(
+        "If you have a form asking someone to select male/female or Mr/Mrs/Ms with no other "
+        "options then you can make a lot of people happy by fixing that. Please fix that. Thank you."
+    ),
+    Msg(
+        "If you like my tweets then you can tweet positive messages supporting trans & nb people, too. "
+        "There’s nothing stopping you. It might even help someone. That's kinda the point of this bot."
+    ),
     #
     # Encouraging support
     #
@@ -202,6 +270,11 @@ MESSAGES = (
         "If your {s} don't support your sexuality then you get to choose a new family. I do not make the rules.",
         PLURAL_FAMILY_RELATIONS,
     ),
+    Msg(
+        "If your {s} is exploring a change to gender identity then it might be really scary for them. "
+        "Your support will make it easier for them. Thank you.",
+        SINGULAR_RELATIONS,
+    ),
     Msg("Parents have an obligation to support their children’s gender identity. I do not make the rules."),
     Msg(
         "If you realise that you accidentally used the wrong pronouns for someone then it’s totally ok to "
@@ -217,8 +290,23 @@ MESSAGES = (
         "But be polite about it please. Thank you."
     ),
     Msg(
-        "If you’ve wondered whether you might look good in {s} then you should probably give it a try.",
+        "If you’ve wondered whether you might look good in {s} then you should probably give it a try. "
+        "I think you'll look beautiful.",
         GENDERED_FEATURES,
+    ),
+    Msg(
+        "Have you ever seen someone dressed differently than you and wished you could dress like them? "
+        "There’s nothing stopping you. Give it a try. I'm sure you'll look amazing."
+    ),
+    Msg(
+        "If you think a {s} person looks fabulous today then you’re probably right, and they "
+        "might like it if you tell them. But please don’t be creepy about it. Unwanted sexual advances are creepy.",
+        CATEGORIES,
+    ),
+    Msg(
+        "You might be {s} and not even realise it. There could be changes that you can make to your "
+        "life which would make you a much happier person. Maybe it's time for you to explore that...?",
+        CATEGORIES_NO_NB,
     ),
     #
     # Feminism
@@ -227,6 +315,13 @@ MESSAGES = (
     Msg("Trans women are women. If you’re excluding some women then {s}.", FEMINISM_WRONG),
     Msg("Many feminists {s}.", NOT_WOMEN),
     Msg("If you're a feminist then, by definition, you care about the rights of trans women. Thank you."),
+    #
+    # On TERFs
+    #
+    Msg(
+        "If you see someone saying things about gender or sexuality which are wrong, harmful or which would "
+        "upset your friends/family, then please speak up. Loudly. We're more powerful together. Thank you."
+    ),
     #
     # Healthcare
     #
@@ -249,6 +344,21 @@ MESSAGES = (
     # QTBIPOC
     #
     Msg("Black trans lives matter #BlackLivesMatter #BlackTransLivesMatter"),
+    #
+    # Quotes
+    #
+    Msg(
+        "“Gender ought not to be construed as a stable identity... rather, gender is an identity "
+        "constituted in time.” - Judith Butler"
+    ),
+    Msg("“You fail to recognise that it matters not what someone is born, but what they grow to " "be!” - Dumbledore"),
+    #
+    # Tagging others
+    #
+    Msg(
+        "It's very nice of the incredibly talented @smolrobots to let me use their beautiful artwork "
+        "as my profile picture. Thank you."
+    ),
 )
 
 

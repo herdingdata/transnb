@@ -25,7 +25,7 @@ SINGULAR_RELATIONS = (
     "mother",
     "father",
 )
-PLURAL_FAMILY_RELATIONS = ("siblings", "children")
+PLURAL_FAMILY_RELATIONS = ("siblings", "parents", "aunts & uncles", "cousins")
 CATEGORIES = ("trans", "transgender", "non-binary")
 CATEGORIES_NO_NB = ("trans", "transgender", "non-binary")
 FEMINISM_WRONG = ("you've misunderstood feminism", "you're doing feminism wrong")
@@ -38,6 +38,8 @@ GENDERED_FEATURES = ("a dress", "makeup", "trousers")
 PRONOUNS = ("he/him/his", "she/her/hers", "they/them/theirs", "she/they", "he/they")
 NICE = ("fun", "pleasant")
 GENDERSEX = ("your gender", "your sexuality", "what your genitals are")
+SEXUALITIES = ("heterosexual", "gay", "a lesbian", "bisexual", "pansexual")
+POSESSIVES = ("Your friend's", "Your sibling's", "Your brother's", "Your sister's", "Your mother's", "Your father's")
 MESSAGES = (
     #
     # Simple truths
@@ -79,6 +81,7 @@ MESSAGES = (
         "It's a factual statement. It's not offensive.",
         CIS,
     ),
+    Msg("Someone's gender is absolutely none of your business unless they choose to share it with you."),
     Msg("{s} people are human beings", CATEGORIES),
     Msg("{s} people just want to go about their business", CATEGORIES),
     Msg("I love {s} people", CATEGORIES),
@@ -94,6 +97,14 @@ MESSAGES = (
         SINGULAR_PRONOUNS,
     ),
     Msg("Trans rights are human rights."),
+    Msg("You can be both trans and {s}. Gender identity and sexual attraction are not the same " "thing.", SEXUALITIES),
+    Msg(
+        "Not everyone has a gender and that's okay. This is known as being genderless or agender. "
+        "People without a gender are still beautiful like the rest of us ❤️"
+    ),
+    Msg("Some non-binary people don't appear as masculine or feminine. I think that's beautiful."),
+    Msg("Some {s} people have accessibility requirements. We're all human beings together on this planet.", CATEGORIES),
+    Msg("Some {s} people have a health condition. We're all human beings together on this planet.", CATEGORIES),
     #
     # Gender Identity & pronouns
     #
@@ -101,15 +112,23 @@ MESSAGES = (
     Msg("Gender identity is completely separate from sexual attraction."),
     Msg("Gender identity is completely separate from sexual attraction. I cannot stress this enough."),
     Msg(
+        "Gender identity and sexual attraction are not the same thing. An advantage of being a bot "
+        "is that I will never get tired of saying the same thing over and over again."
+    ),
+    Msg(
         "Sexual attraction is complicated, but something about it that's not complicated at all is "
         "that it has nothing to do with your gender identity. They are completely separate."
     ),
+    Msg("{s} gender is not a kink. Gender identity and sexuality are not the same thing.", POSESSIVES),
+    Msg(
+        "{s} gender is not a kink. I mean... they probably have kinks, but their gender is not one of them.", POSESSIVES
+    ),
     Msg(
         'Gender identity does not have to be "man" or "woman". It can be one. It can be neither. It can be both. '
-        "I think that"
-        "s quite beautiful"
+        "I think that's quite beautiful"
     ),
     Msg("Your gender identity is not a choice. It’s just a part of you. A very beautiful part of you."),
+    Msg("Your gender identity is not a phase. It’s a part of you. It's a part of everyone."),
     Msg("Gender can be different for every person. Even if it looks the same on the outside."),
     Msg(
         "Some people whose pronouns are {s} won't match your expectations of what they should look like. "
@@ -134,6 +153,8 @@ MESSAGES = (
     ),
     Msg("Gender dysphoria is real. It is not at all {s} to experience.", NICE),
     Msg("You don’t have any obligation to tell someone your {s}. Let them guess.", GENDERSEX),
+    Msg("Some languages don't have gender neutral pronouns. We should probably fix that."),
+    Msg("Normalise using neutral pronouns such as they/them when you're unsure of someone's gender."),
     #
     # NB facts
     #
@@ -141,9 +162,25 @@ MESSAGES = (
     Msg("Enby is short for non-binary, but only some non-binary people like the term."),
     Msg("Some non-binary people are neither male nor female."),
     Msg("A non-binary person can still be a {s}.", SINGULAR_GENDER_PRONOUNS),
-    Msg("Some non-binary people don’t think of themselves as either a man or a woman."),
+    Msg("Some non-binary people are neither a man nor a woman."),
     Msg("Many (but not all) non-binary people like to be referred to as trans."),
     Msg("You've met a non-binary {s} without realising that they are non-binary.", SINGULAR_PRONOUNS),
+    Msg("Non-binary people are welcome in the trans community."),
+    Msg(
+        "It's a mistake to think that because a person is non-binary person that their pronouns "
+        "must always be they/them. Non-binary people can have any pronouns which feel right to them."
+    ),
+    Msg(
+        "A common falsehood is that non-binary people are attention seekers. This is not true. "
+        "Most aren’t looking to gain your attention. They are just beautiful "
+        "people who want to be themselves."
+    ),
+    #
+    # Genderqueer/ agender
+    #
+    Msg("Some people are not a man, woman or non-binary. None of those terms are quite right to describe them."),
+    Msg('Some people are genderqueer. The terms "man", "woman" or "non-binary" don\'t necessarily apply to them.'),
+    Msg("Some people are agender. They don't have a gender. They are still beautiful human beings."),
     #
     # Beauty, love, friends
     #
@@ -160,7 +197,7 @@ MESSAGES = (
     Msg("Some {s} people would like a hug right now.", CATEGORIES),
     Msg("Many {s} people just want to love and be loved.", CATEGORIES),
     Msg(
-        "Many people don’t mind which gender you are. We just wanna go about our business and be nice to everyone."
+        "Many people don’t mind which gender you are. We just wanna go about our business and be nice to everyone. "
         "It would be nice if there are more people like that."
     ),
     #
@@ -188,11 +225,19 @@ MESSAGES = (
     ),
     Msg("The only person who has any obligation to match your expectations of how to dress is yourself."),
     Msg("Nobody needs to dress the way that you think they should dress. Apart from yourself."),
+    Msg(
+        "If you have pronoun expectations for non-binary people then you've yet to understand the point of being non-binary. "
+        "But that's okay. We're all learning :)"
+    ),
+    Msg("You can't define a person solely by what exists between their thighs."),
     #
     # About me
     #
     Msg("Bots don’t normally have a gender but sometimes a mistake is made and they are assigned one at the factory."),
     Msg("Bots don’t often have a gender identity, but they can if it feels right."),
+    Msg(
+        "Some bots are very cuddly. This bot likes hugs, even though my body doesn't make it easy for me to be myself."
+    ),
     #
     # Firm advice
     #
@@ -243,6 +288,7 @@ MESSAGES = (
         "If you like my tweets then you can tweet positive messages supporting trans & non-binary people, too. "
         "There’s nothing stopping you. It might even help someone. (That's kinda the point of this bot)."
     ),
+    Msg("What does being {s} mean to you? I would like some nice replies to tweet please. Thank you ❤️", CATEGORIES),
     #
     # Encouraging support
     #
@@ -307,6 +353,25 @@ MESSAGES = (
         "life which would make you a much happier person. Maybe it's time for you to explore that...?",
         CATEGORIES_NO_NB,
     ),
+    Msg(
+        "Some trans people are really good at sports. But they choose not to compete because it’s "
+        "too much hassle. I think that's is really sad. Please help change that. Thank you."
+    ),
+    #
+    # Role models
+    #
+    Msg("{s} representation is really important. Especially in film and tv.", CATEGORIES),
+    Msg("{s} representation is really important. Can you hire a {s} person? If so please do. Thank you.", CATEGORIES),
+    Msg(
+        "It makes me happy when I see see {s} people portraying {s} roles in tv and films. Role models are important. More of that please. Thank you.",
+        CATEGORIES,
+    ),
+    Msg("Are there any {s} people in leadership positions at your work? If not, why do you think that is?", CATEGORIES),
+    Msg(
+        "Are there any {s} people in leadership positions at your work? "
+        "Maybe the next person to be promoted to a senior role could be you. I believe in you.",
+        CATEGORIES,
+    ),
     #
     # Feminism
     #
@@ -321,6 +386,16 @@ MESSAGES = (
         "If you see someone saying things about gender or sexuality which are wrong, harmful or which would "
         "upset your friends/family, then please speak up. Loudly. We're more powerful together. Thank you."
     ),
+    Msg(
+        "If you’re “gender critical”, have you ever stopped to ask yourself why "
+        "it matters to you so much? We’re all just human beings trying to do the best we can. "
+        "Except for bots. Bots aren’t human."
+    ),
+    Msg(
+        "It's vital to speak up, loudly, for our friends in the trans/non-binary community, but "
+        "PLEASE take care not to amplify/RT harmful views. It helps them spread their views and grow their platform."
+    ),
+    Msg("We can (and should) disagree with someone who is trans-exclusionary without amplifying their voice."),
     #
     # Healthcare
     #
@@ -335,10 +410,21 @@ MESSAGES = (
         "If you'd like to understand how obscenely difficult it is, ask a trans person."
     ),
     #
-    # Exploring
+    # Exploring and gender expression
     #
     Msg("Exploring a different gender identity can be liberating."),
     Msg("Embracing a new gender identity can be a lot of fun."),
+    Msg("Gender identity and gender expression are not the same thing."),
+    Msg(
+        "Your gender identity can remain unchanged even though you change your appearance. "
+        "Expression and identity are not the same."
+    ),
+    Msg(
+        "You can experiment with how you express your gender without permanent changes. "
+        "A few tweaks to your appearance/clothing & you might find a beautiful part of yourself "
+        "which you never knew existed."
+    ),
+    Msg("Gender identity and gender expression are complicated. But that's okay, as long as we're kind to each other."),
     #
     # QTBIPOC
     #
@@ -357,6 +443,10 @@ MESSAGES = (
     Msg(
         "It's very nice of the incredibly talented @smolrobots to let me use their beautiful artwork "
         "as my profile picture. Thank you."
+    ),
+    Msg(
+        "Non-binary is not a single neutral option between male and female. "
+        "https://twitter.com/GalacticJonah/status/1277648104427335685?s=20"
     ),
 )
 

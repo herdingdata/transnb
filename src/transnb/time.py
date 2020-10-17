@@ -6,7 +6,6 @@ python src/transnb/time.py
 """
 import datetime as dt
 import secrets
-from pprint import pprint as pp
 from statistics import mean
 
 from croniter import croniter

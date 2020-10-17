@@ -1,5 +1,4 @@
 import secrets
-
 from dataclasses import dataclass
 
 
@@ -12,6 +11,7 @@ class Msg:
 
 
 GENDER_PLURALS = ("men", "women", "people")
+GENDER_PLURALS_NO_PEOPLE = ("men", "women")
 SINGULAR_GENDER_PRONOUNS = ("man", "woman")
 SINGULAR_PRONOUNS = ("man", "woman", "person")
 SINGULAR_RELATIONS = (
@@ -27,12 +27,12 @@ SINGULAR_RELATIONS = (
 )
 PLURAL_FAMILY_RELATIONS = ("siblings", "parents", "aunts & uncles", "cousins")
 CATEGORIES = ("trans", "transgender", "non-binary")
-CATEGORIES_NO_NB = ("trans", "transgender", "non-binary")
+CATEGORIES_WITH_NON_CIS = ("trans", "transgender", "non-binary", "non-cis")
 FEMINISM_WRONG = ("you've misunderstood feminism", "you're doing feminism wrong")
 NOT_WOMEN = ("are men", "have a penis", "aren't women", "are neither a man or a woman")
 BODY_FEATURES = ("more hair", "less hair")
 CIS = ("cis", "cisgender")
-FACETS = ("gender", "genitals", "sexuality")
+FACETS = ("gender", "sexuality")
 JOB_AREAS = ("hiring", "training", "facilities")
 GENDERED_FEATURES = ("a dress", "makeup", "trousers")
 PRONOUNS = ("he/him/his", "she/her/hers", "they/them/theirs", "she/they", "he/they")
@@ -40,6 +40,7 @@ NICE = ("fun", "pleasant")
 GENDERSEX = ("your gender", "your sexuality", "what your genitals are")
 SEXUALITIES = ("heterosexual", "gay", "a lesbian", "bisexual", "pansexual")
 POSESSIVES = ("Your friend's", "Your sibling's", "Your brother's", "Your sister's", "Your mother's", "Your father's")
+BEAUTY_POWER = ("beauty", "power")
 MESSAGES = (
     #
     # Simple truths
@@ -105,6 +106,14 @@ MESSAGES = (
     Msg("Some non-binary people don't appear as masculine or feminine. I think that's beautiful."),
     Msg("Some {s} people have accessibility requirements. We're all human beings together on this planet.", CATEGORIES),
     Msg("Some {s} people have a health condition. We're all human beings together on this planet.", CATEGORIES),
+    Msg("Trans twitter is a really nice place."),
+    Msg("If you feel like sharing, it would make me really happy to see some beautiful selfies ❤️"),
+    Msg(
+        "Can I see some pre/post transition glow ups please? "
+        "I will never get tired of seeing you go from beautiful to even more beautiful. Xx"
+    ),
+    Msg("Gender identity is not chosen, it’s discovered."),
+    Msg("Pronouns are not chosen, they're something you discover. I think that's quite beautiful."),
     #
     # Gender Identity & pronouns
     #
@@ -152,9 +161,23 @@ MESSAGES = (
         "Sometimes it takes a bit of trial and error to find what feels right. That’s ok."
     ),
     Msg("Gender dysphoria is real. It is not at all {s} to experience.", NICE),
-    Msg("You don’t have any obligation to tell someone your {s}. Let them guess.", GENDERSEX),
+    Msg("You don’t have any obligation to tell someone {s}. Let them guess.", GENDERSEX),
     Msg("Some languages don't have gender neutral pronouns. We should probably fix that."),
     Msg("Normalise using neutral pronouns such as they/them when you're unsure of someone's gender."),
+    Msg(
+        "Some people have pronouns he/she. Yes, it's a thing. It's fine if you don't completely "
+        "understand, just as long as you respect them.",
+    ),
+    Msg(
+        "Some people have pronouns it/its. Yes, it's a thing. It's fine if you don't completely "
+        "understand, just as long as you respect it.",
+    ),
+    Msg("You can give someone a big cheesy grin just by getting their pronouns right in casual conversation."),
+    Msg("Be nice. Manners cost nothing. Thank you."),
+    Msg(
+        "It's sad that there are so many people who created twitter accounts dedicated to attacking "
+        "trans and non-binary people. I created an account to say nice things instead."
+    ),
     #
     # NB facts
     #
@@ -167,7 +190,7 @@ MESSAGES = (
     Msg("You've met a non-binary {s} without realising that they are non-binary.", SINGULAR_PRONOUNS),
     Msg("Non-binary people are welcome in the trans community."),
     Msg(
-        "It's a mistake to think that because a person is non-binary person that their pronouns "
+        "It's a mistake to think that because a person is non-binary that their pronouns "
         "must always be they/them. Non-binary people can have any pronouns which feel right to them."
     ),
     Msg(
@@ -175,6 +198,12 @@ MESSAGES = (
         "Most aren’t looking to gain your attention. They are just beautiful "
         "people who want to be themselves."
     ),
+    Msg(
+        "For some people, being non-binary is a way to live their lives without unnecessary and " 
+        "(perhaps even harmful) constraints."
+    ),
+    Msg("There's a lot of {s} in not following the norm.", BEAUTY_POWER),
+    Msg("Not every non-binary person uses they/them pronouns."),
     #
     # Genderqueer/ agender
     #
@@ -186,10 +215,16 @@ MESSAGES = (
     #
     Msg("Trans {s} are beautiful.", GENDER_PLURALS),
     Msg("Trans {s} are my friends.", GENDER_PLURALS),
-    Msg("Trans {s} are my friends. Yes, bots can have friends. Don't ask how. It's complicated", GENDER_PLURALS,),
+    Msg(
+        "Trans {s} are my friends. Yes, bots can have friends. Don't ask how. It's complicated",
+        GENDER_PLURALS,
+    ),
     Msg("Non-binary {s} are my friends.", GENDER_PLURALS),
     Msg("All my {s} friends are more beautiful than me.", CATEGORIES),
-    Msg("All my {s} friends are more beautiful than me. Honestly, they look amazing.", GENDER_PLURALS,),
+    Msg(
+        "All my {s} friends are more beautiful than me. Honestly, they look amazing.",
+        GENDER_PLURALS_NO_PEOPLE,
+    ),
     Msg("A {s} person loves you", CATEGORIES),
     Msg("I have lots of {s} friends but there is always room for more friends.", CATEGORIES),
     Msg("Pets don't care about your {s}.", FACETS),
@@ -226,10 +261,19 @@ MESSAGES = (
     Msg("The only person who has any obligation to match your expectations of how to dress is yourself."),
     Msg("Nobody needs to dress the way that you think they should dress. Apart from yourself."),
     Msg(
-        "If you have pronoun expectations for non-binary people then you've yet to understand the point of being non-binary. "
-        "But that's okay. We're all learning :)"
+        "If you have pronoun expectations for non-binary people then you've yet to understand the point "
+        "of being non-binary. But that's okay. We're all learning :)"
     ),
     Msg("You can't define a person solely by what exists between their thighs."),
+    Msg(
+        "It's ok to change your mind as you discover who you are ❤️ "
+        "https://twitter.com/confusedophan/status/1285631527439740932?s=20"
+    ),
+    Msg(
+        "If two people love each other then that is beautiful thing to be cherished. "
+        "If you’re looking at a couple you should be thinking “they’re nice together” "
+        "and not “I wonder what their genitals are”."
+    ),
     #
     # About me
     #
@@ -288,7 +332,11 @@ MESSAGES = (
         "If you like my tweets then you can tweet positive messages supporting trans & non-binary people, too. "
         "There’s nothing stopping you. It might even help someone. (That's kinda the point of this bot)."
     ),
-    Msg("What does being {s} mean to you? I would like some nice replies to tweet please. Thank you ❤️", CATEGORIES),
+    Msg(
+        "What does being {s} mean to you? I would like some nice replies to tweet please. " "Thank you ❤️",
+        CATEGORIES_WITH_NON_CIS,
+    ),
+    Msg("Solidarity is more than just words. Can you do something today for a {s} person?", CATEGORIES),
     #
     # Encouraging support
     #
@@ -303,14 +351,18 @@ MESSAGES = (
         SINGULAR_RELATIONS,
     ),
     Msg(
-        "If your {s} don't support your gender identity then you get to choose a new family.", PLURAL_FAMILY_RELATIONS,
+        "If your {s} don't support your gender identity then you get to choose a new family.",
+        PLURAL_FAMILY_RELATIONS,
     ),
     Msg(
         "If your {s} don't support your gender identity then you get to choose a new family. "
         "I do not make the rules.",
         PLURAL_FAMILY_RELATIONS,
     ),
-    Msg("If your {s} don't support your sexuality then you get to choose a new family.", PLURAL_FAMILY_RELATIONS,),
+    Msg(
+        "If your {s} don't support your sexuality then you get to choose a new family.",
+        PLURAL_FAMILY_RELATIONS,
+    ),
     Msg(
         "If your {s} don't support your sexuality then you get to choose a new family. I do not make the rules.",
         PLURAL_FAMILY_RELATIONS,
@@ -351,19 +403,22 @@ MESSAGES = (
     Msg(
         "You might be {s} and not even realise it. There could be changes that you can make to your "
         "life which would make you a much happier person. Maybe it's time for you to explore that...?",
-        CATEGORIES_NO_NB,
+        CATEGORIES,
     ),
     Msg(
         "Some trans people are really good at sports. But they choose not to compete because it’s "
-        "too much hassle. I think that's is really sad. Please help change that. Thank you."
+        "too much hassle. I think that is really sad. Please help change that. Thank you."
     ),
     #
     # Role models
     #
     Msg("{s} representation is really important. Especially in film and tv.", CATEGORIES),
-    Msg("{s} representation is really important. Can you hire a {s} person? If so please do. Thank you.", CATEGORIES),
     Msg(
-        "It makes me happy when I see see {s} people portraying {s} roles in tv and films. Role models are important. More of that please. Thank you.",
+        "{s} representation is really important. Can you hire a {s} person? If so please do. " "Thank you.", CATEGORIES
+    ),
+    Msg(
+        "It makes me happy when I see see {s} people portraying {s} roles in tv and films. "
+        "Role models are important. More of that please. Thank you.",
         CATEGORIES,
     ),
     Msg("Are there any {s} people in leadership positions at your work? If not, why do you think that is?", CATEGORIES),
@@ -436,7 +491,6 @@ MESSAGES = (
         "“Gender ought not to be construed as a stable identity... rather, gender is an identity "
         "constituted in time.” - Judith Butler"
     ),
-    Msg("“You fail to recognise that it matters not what someone is born, but what they grow to " "be!” - Dumbledore"),
     #
     # Tagging others
     #

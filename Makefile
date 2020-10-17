@@ -51,13 +51,13 @@ lint: requirements
 
 .PHONY: check-format
 check-format: requirements
-	isort -rc -c $(SRCPATH)
+	isort -c $(SRCPATH)
 	black --check $(SRCPATH)
 
 
 .PHONY: format
 format: requirements
-	isort -rc $(SRCPATH)
+	isort $(SRCPATH)
 	black $(SRCPATH)
 
 

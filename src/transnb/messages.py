@@ -41,7 +41,6 @@ PRONOUNS = ("he/him/his", "she/her/hers", "they/them/theirs", "she/they", "he/th
 NICE = ("fun", "pleasant")
 GENDERSEX = ("your gender", "your sexuality", "what your genitals are")
 SEXUALITIES = ("heterosexual", "gay", "a lesbian", "bisexual", "pansexual", "asexual")
-POSESSIVES = ("Your friend's", "Your sibling's", "Your brother's", "Your sister's", "Your mother's", "Your father's")
 BEAUTY_POWER = ("beauty", "power")
 MESSAGES = (
     #
@@ -138,9 +137,9 @@ MESSAGES = (
         "Sexual attraction is complicated, but something about it that's not complicated at all is "
         "that it has nothing to do with your gender identity. They are completely separate."
     ),
-    Msg("{s} gender is not a kink. Gender identity and sexuality are not the same thing.", POSESSIVES),
+    Msg("Your {s}'s gender is not a kink. Gender identity and sexuality are not the same thing.", SINGULAR_RELATIONS),
     Msg(
-        "{s} gender is not a kink. I mean... they probably have kinks, but their gender is not one of them.", POSESSIVES
+        "Your {s}'s gender is not a kink. I mean... they probably have kinks, but their gender is not one of them.", SINGULAR_RELATIONS
     ),
     Msg(
         'Gender identity does not have to be "man" or "woman". It can be one. It can be neither. It can be both. '

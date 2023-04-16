@@ -24,6 +24,8 @@ SINGULAR_RELATIONS = (
     "parent",
     "mother",
     "father",
+    "aunt",
+    "uncle"
 )
 PLURAL_FAMILY_RELATIONS = ("siblings", "parents", "aunts & uncles", "cousins")
 CATEGORIES = ("trans", "transgender", "non-binary")
@@ -38,8 +40,7 @@ GENDERED_FEATURES = ("a dress", "makeup", "trousers")
 PRONOUNS = ("he/him/his", "she/her/hers", "they/them/theirs", "she/they", "he/they")
 NICE = ("fun", "pleasant")
 GENDERSEX = ("your gender", "your sexuality", "what your genitals are")
-SEXUALITIES = ("heterosexual", "gay", "a lesbian", "bisexual", "pansexual")
-POSESSIVES = ("Your friend's", "Your sibling's", "Your brother's", "Your sister's", "Your mother's", "Your father's")
+SEXUALITIES = ("heterosexual", "gay", "a lesbian", "bisexual", "pansexual", "asexual")
 BEAUTY_POWER = ("beauty", "power")
 MESSAGES = (
     #
@@ -76,6 +77,14 @@ MESSAGES = (
     Msg(
         "Some people don't like the body features they were born with "
         "but it's none of your business unless they choose to discuss it with you."
+    ),
+    Msg(
+        "All human beings deserve equal treatment no matter their gender identity or sexuality. "
+        "To be perceived as what you say you are is a basic right."  # ~Andrej Pejic
+    ),
+    Msg(
+        "Remember this, whoever you are, however you are, you are equally valid, "
+        "equally justified, and equally beautiful."  # ~Juno Dawson
     ),
     Msg(
         "Being '{s}' means that your gender identity has been the same for your entire life. "
@@ -128,9 +137,10 @@ MESSAGES = (
         "Sexual attraction is complicated, but something about it that's not complicated at all is "
         "that it has nothing to do with your gender identity. They are completely separate."
     ),
-    Msg("{s} gender is not a kink. Gender identity and sexuality are not the same thing.", POSESSIVES),
+    Msg("Your {s}'s gender is not a kink. Gender identity and sexuality are not the same thing.", SINGULAR_RELATIONS),
     Msg(
-        "{s} gender is not a kink. I mean... they probably have kinks, but their gender is not one of them.", POSESSIVES
+        "Your {s}'s gender is not a kink. I mean... they probably have kinks, but their gender is not one of them.",
+        SINGULAR_RELATIONS
     ),
     Msg(
         'Gender identity does not have to be "man" or "woman". It can be one. It can be neither. It can be both. '
@@ -199,7 +209,7 @@ MESSAGES = (
         "people who want to be themselves."
     ),
     Msg(
-        "For some people, being non-binary is a way to live their lives without unnecessary and " 
+        "For some people, being non-binary is a way to live their lives without unnecessary and "
         "(perhaps even harmful) constraints."
     ),
     Msg("There's a lot of {s} in not following the norm.", BEAUTY_POWER),

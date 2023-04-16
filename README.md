@@ -4,11 +4,15 @@
 A bot which sends messages of love and solidarity to our
 trans and non-binary friends in the LGBTQ+ community.
 
-This repo is the code which powers [@transnb](https://twitter.com/transnb)
+This repo is the code which powers [@transnb@botsin.space](https://botsin.space/@transnb)
+which used to live on twitter [@transnb](https://twitter.com/transnb).
 
-Project created with love by [Andy Herd](https://herdingdata.co.uk) (twitter [@herdingdata](https://twitter.com/herdingdata))
-
-The beautiful bot logo was created by [@smolrobots](https://twitter.com/smolrobots)
+- Project created with love by [Andy Herd](https://herdingdata.co.uk) (he/him)
+- Andy is`@herdingdata` on [mastodon](https://mastodon.scot/@herdingdata) & [twitter](https://twitter.com/herdingdata)
+- If you want to support me, I would welcome a donation to my climate action & conservation charity
+[Protect Earth](https://www.protect.earth/)
+- The beautiful bot logo was created by [@smolrobots](https://twitter.com/smolrobots)
+who you can support on [patreon](https://www.patreon.com/thomasheasmanhunt)
 
 ## First time setup (development)
 ```
@@ -93,3 +97,5 @@ crontab -e
 */7 * * * * /path/to/.virtualenv/transnb/bin/transnb-tweet | logger
 
 ```
+
+PS here's some mastodon verification <a rel="me" href="https://botsin.space/@transnb">mastodon verification</a>

@@ -20,7 +20,7 @@ who you can support on [patreon](https://www.patreon.com/thomasheasmanhunt)
 mkvirtualenv transnb -p /usr/local/bin/python3.8
 
 # Create credentials file
-cp src/settings_local.py src/settings.py
+cp src/settings_template.py src/settings.py
 
 # Then put the auth details into src/settings.py
 vi src/settings.py
@@ -46,8 +46,10 @@ transnb-all
 
 ## Other stuff
 Message for future Andy: you'll probably need these links the next time you look at this project.
-- http://docs.tweepy.org/en/latest/api.html#api-reference
-- https://developer.twitter.com/en/apps
+- https://pypi.org/project/tweepy-mastodon/
+- https://github.com/shuuji3/tweepy-mastodon
+- (twitter is deprecated) http://docs.tweepy.org/en/latest/api.html#api-reference
+- (twitter is deprecated) https://developer.twitter.com/en/apps
 
 ## Raspberry pi
 For making it run on a schedule.

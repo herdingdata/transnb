@@ -1,5 +1,5 @@
 import click
-import tweepy
+import tweepy_mastodon as tweepy
 
 import settings as s
 from transnb import messages, time
@@ -13,8 +13,12 @@ def _do_toot(message: str):
         # we got a message override so let's just post it regardless of probability
         do_a_post = True
     if do_a_post:
-        auth = tweepy.OAuthHandler(s.API_KEY, s.API_SECRET_KEY)
-        auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
+        auth = tweepy.OAuth1UserHandler(
+            consumer_key=s.CLIENT_KEY,
+            consumer_secret=s.CLIENT_SECRET,
+            api_base_url=s.BASE_URL
+        )
+        auth.set_access_token(s.ACCESS_TOKEN)
         api = tweepy.API(auth)
         api.update_status(message)
         click.echo(f"transnb-toot:posted:{message}")

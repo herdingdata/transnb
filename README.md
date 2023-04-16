@@ -11,7 +11,7 @@ which used to live on twitter [@transnb](https://twitter.com/transnb).
 - Andy is`@herdingdata` on [mastodon](https://mastodon.scot/@herdingdata) & [twitter](https://twitter.com/herdingdata)
 - If you want to support me, I would welcome a donation to my climate action & conservation charity
 [Protect Earth](https://www.protect.earth/)
-- The beautiful bot logo was created by [@smolrobots](https://twitter.com/smolrobots)
+- The beautiful bot logo was created by (& used with permission of) [@smolrobots](https://twitter.com/smolrobots)
 who you can support on [patreon](https://www.patreon.com/thomasheasmanhunt)
 
 ## First time setup (development)

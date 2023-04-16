@@ -1,14 +1,9 @@
-import tweepy
-
-import settings as s
+from transnb.commands import get_mastodon_api
 
 
-def test__can_see_twitter():
-    # basically do we have valid credentials?
-    auth = tweepy.OAuthHandler(s.API_KEY, s.API_SECRET_KEY)
-    auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
-    api = tweepy.API(auth)
-
-    result = api.me()
+def test__can_see_mastodon():
+    # basically do we have valid settings configured and credentials which work?
+    api = get_mastodon_api()
+    result = api.verify_credentials()
 
     assert result.screen_name == "transnb"

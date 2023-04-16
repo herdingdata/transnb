@@ -13,17 +13,20 @@ def _do_toot(message: str):
         # we got a message override so let's just post it regardless of probability
         do_a_post = True
     if do_a_post:
-        auth = tweepy.OAuth1UserHandler(
-            consumer_key=s.CLIENT_KEY,
-            consumer_secret=s.CLIENT_SECRET,
-            api_base_url=s.BASE_URL
-        )
-        auth.set_access_token(s.ACCESS_TOKEN)
-        api = tweepy.API(auth)
+        api = get_mastodon_api()
         api.update_status(message)
         click.echo(f"transnb-toot:posted:{message}")
     else:
         click.echo("transnb-toot:skipped toot")
+
+
+def get_mastodon_api():
+    """
+    grab the auth credentials from settings & set up a working API
+    """
+    auth = tweepy.OAuth1UserHandler(consumer_key=s.CLIENT_KEY, consumer_secret=s.CLIENT_SECRET, api_base_url=s.BASE_URL)
+    auth.set_access_token(s.ACCESS_TOKEN)
+    return tweepy.API(auth)
 
 
 @click.command()

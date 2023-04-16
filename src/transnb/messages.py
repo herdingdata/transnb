@@ -25,7 +25,7 @@ SINGULAR_RELATIONS = (
     "mother",
     "father",
     "aunt",
-    "uncle"
+    "uncle",
 )
 PLURAL_FAMILY_RELATIONS = ("siblings", "parents", "aunts & uncles", "cousins")
 CATEGORIES = ("trans", "transgender", "non-binary")
@@ -140,7 +140,7 @@ MESSAGES = (
     Msg("Your {s}'s gender is not a kink. Gender identity and sexuality are not the same thing.", SINGULAR_RELATIONS),
     Msg(
         "Your {s}'s gender is not a kink. I mean... they probably have kinks, but their gender is not one of them.",
-        SINGULAR_RELATIONS
+        SINGULAR_RELATIONS,
     ),
     Msg(
         'Gender identity does not have to be "man" or "woman". It can be one. It can be neither. It can be both. '

@@ -32,13 +32,13 @@ make test
 
 ## Commands
 ```
-# Do a tweet of a randomly picked predefined message
-transnb-tweet
+# Do a toot of a randomly picked predefined message
+transnb-toot
 
-# Do a tweet and choose a specific message
-transnb-tweet -m "message goes here"
+# Do a toot and choose a specific message
+transnb-toot -m "message goes here"
 # or
-transnb-tweet --message "message goes here"
+transnb-toot --message "message goes here"
 
 # Show all the messages
 transnb-all
@@ -94,7 +94,7 @@ make test
 # Open the crontab in edit mode
 crontab -e
 
-*/7 * * * * /path/to/.virtualenv/transnb/bin/transnb-tweet | logger
+*/7 * * * * /path/to/.virtualenv/transnb/bin/transnb-toot | logger
 
 ```
 

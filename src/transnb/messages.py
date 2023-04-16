@@ -339,11 +339,11 @@ MESSAGES = (
         "options then you can make a lot of people happy by fixing that. Please fix that. Thank you."
     ),
     Msg(
-        "If you like my tweets then you can tweet positive messages supporting trans & non-binary people, too. "
+        "If you like my toots then you can toot positive messages supporting trans & non-binary people, too. "
         "There’s nothing stopping you. It might even help someone. (That's kinda the point of this bot)."
     ),
     Msg(
-        "What does being {s} mean to you? I would like some nice replies to tweet please. " "Thank you ❤️",
+        "What does being {s} mean to you? I would like some nice replies to toot please. " "Thank you ❤️",
         CATEGORIES_WITH_NON_CIS,
     ),
     Msg("Solidarity is more than just words. Can you do something today for a {s} person?", CATEGORIES),

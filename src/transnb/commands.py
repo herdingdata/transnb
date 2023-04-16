@@ -5,10 +5,10 @@ import settings as s
 from transnb import messages, time
 
 
-def _do_tweet(message: str):
+def _do_toot(message: str):
     if message is None:
         message = messages.get_random_message()
-        do_a_post = time.do_i_post_a_tweet()
+        do_a_post = time.do_i_post_a_toot()
     else:
         # we got a message override so let's just post it regardless of probability
         do_a_post = True
@@ -17,16 +17,16 @@ def _do_tweet(message: str):
         auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
         api.update_status(message)
-        click.echo(f"transnb-tweet:posted:{message}")
+        click.echo(f"transnb-toot:posted:{message}")
     else:
-        click.echo("transnb-tweet:skipped tweet")
+        click.echo("transnb-toot:skipped toot")
 
 
 @click.command()
 @click.option("-m", "--message", default=None)
-def tweet(*args, **kwargs) -> None:
-    """Entry point for sending a tweet."""
-    _do_tweet(*args, **kwargs)
+def toot(*args, **kwargs) -> None:
+    """Entry point for sending a toot."""
+    _do_toot(*args, **kwargs)
 
 
 @click.command()
@@ -43,4 +43,4 @@ def analyse():
 
 
 if __name__ == "__main__":
-    _do_tweet()
+    _do_toot()

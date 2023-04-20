@@ -18,7 +18,7 @@ setup(
     install_requires=["click"],
     entry_points="""
         [console_scripts]
-        transnb-tweet=transnb.commands:tweet
+        transnb-toot=transnb.commands:toot
         transnb-all=transnb.commands:all_messages
         transnb-analyse=transnb.commands:analyse
     """,

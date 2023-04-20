@@ -1,32 +1,43 @@
 import click
-import tweepy
+import tweepy_mastodon as tweepy
 
-import settings as s
+from settings import MASTODON
 from transnb import messages, time
+from transnb.commands_legacy_twitter import do_tweet as legacy_tweet
 
 
-def _do_tweet(message: str):
+def _do_toot(message: str):
     if message is None:
         message = messages.get_random_message()
-        do_a_post = time.do_i_post_a_tweet()
+        do_a_post = time.do_i_post_a_toot()
     else:
         # we got a message override so let's just post it regardless of probability
         do_a_post = True
     if do_a_post:
-        auth = tweepy.OAuthHandler(s.API_KEY, s.API_SECRET_KEY)
-        auth.set_access_token(s.ACCESS_TOKEN, s.ACCESS_TOKEN_SECRET)
-        api = tweepy.API(auth)
+        api = get_mastodon_api()
         api.update_status(message)
-        click.echo(f"transnb-tweet:posted:{message}")
+        click.echo(f"transnb-toot:posted:{message}")
+        legacy_tweet(message=message)  # todo - remove when twitter turns my api access off
     else:
-        click.echo("transnb-tweet:skipped tweet")
+        click.echo("transnb-toot:skipped toot")
+
+
+def get_mastodon_api():
+    """
+    grab the auth credentials from settings & set up a working API
+    """
+    auth = tweepy.OAuth1UserHandler(
+        consumer_key=MASTODON.CLIENT_KEY, consumer_secret=MASTODON.CLIENT_SECRET, api_base_url=MASTODON.BASE_URL
+    )
+    auth.set_access_token(MASTODON.ACCESS_TOKEN)
+    return tweepy.API(auth)
 
 
 @click.command()
 @click.option("-m", "--message", default=None)
-def tweet(*args, **kwargs) -> None:
-    """Entry point for sending a tweet."""
-    _do_tweet(*args, **kwargs)
+def toot(*args, **kwargs) -> None:
+    """Entry point for sending a toot."""
+    _do_toot(*args, **kwargs)
 
 
 @click.command()
@@ -43,4 +54,4 @@ def analyse():
 
 
 if __name__ == "__main__":
-    _do_tweet()
+    _do_toot()

@@ -4,11 +4,15 @@
 A bot which sends messages of love and solidarity to our
 trans and non-binary friends in the LGBTQ+ community.
 
-This repo is the code which powers [@transnb](https://twitter.com/transnb)
+This repo is the code which powers [@transnb@botsin.space](https://botsin.space/@transnb)
+which used to live on twitter [@transnb](https://twitter.com/transnb).
 
-Project created with love by [Andy Herd](https://herdingdata.co.uk) (twitter [@herdingdata](https://twitter.com/herdingdata))
-
-The beautiful bot logo was created by [@smolrobots](https://twitter.com/smolrobots)
+- Project created with love by [Andy Herd](https://herdingdata.co.uk) (he/him)
+- Andy is`@herdingdata` on [mastodon](https://mastodon.scot/@herdingdata) & [twitter](https://twitter.com/herdingdata)
+- If you want to support me, I would welcome a donation to my climate action & conservation charity
+[Protect Earth](https://www.protect.earth/)
+- The beautiful bot logo was created by (& used with permission of) [@smolrobots](https://twitter.com/smolrobots)
+who you can support on [patreon](https://www.patreon.com/thomasheasmanhunt)
 
 ## First time setup (development)
 ```
@@ -16,7 +20,7 @@ The beautiful bot logo was created by [@smolrobots](https://twitter.com/smolrobo
 mkvirtualenv transnb -p /usr/local/bin/python3.8
 
 # Create credentials file
-cp src/settings_local.py src/settings.py
+cp src/settings_template.py src/settings.py
 
 # Then put the auth details into src/settings.py
 vi src/settings.py
@@ -28,13 +32,13 @@ make test
 
 ## Commands
 ```
-# Do a tweet of a randomly picked predefined message
-transnb-tweet
+# Do a toot of a randomly picked predefined message
+transnb-toot
 
-# Do a tweet and choose a specific message
-transnb-tweet -m "message goes here"
+# Do a toot and choose a specific message
+transnb-toot -m "message goes here"
 # or
-transnb-tweet --message "message goes here"
+transnb-toot --message "message goes here"
 
 # Show all the messages
 transnb-all
@@ -42,8 +46,10 @@ transnb-all
 
 ## Other stuff
 Message for future Andy: you'll probably need these links the next time you look at this project.
-- http://docs.tweepy.org/en/latest/api.html#api-reference
-- https://developer.twitter.com/en/apps
+- https://pypi.org/project/tweepy-mastodon/
+- https://github.com/shuuji3/tweepy-mastodon
+- (twitter is deprecated) http://docs.tweepy.org/en/latest/api.html#api-reference
+- (twitter is deprecated) https://developer.twitter.com/en/apps
 
 ## Raspberry pi
 For making it run on a schedule.
@@ -90,6 +96,8 @@ make test
 # Open the crontab in edit mode
 crontab -e
 
-*/7 * * * * /path/to/.virtualenv/transnb/bin/transnb-tweet | logger
+*/7 * * * * /path/to/.virtualenv/transnb/bin/transnb-toot | logger
 
 ```
+
+PS here's some mastodon verification <a rel="me" href="https://botsin.space/@transnb">mastodon verification</a>

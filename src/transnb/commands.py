@@ -1,8 +1,9 @@
 import click
 import tweepy_mastodon as tweepy
 
-import settings as s
+from settings import MASTODON
 from transnb import messages, time
+from transnb.commands_legacy_twitter import do_tweet as legacy_tweet
 
 
 def _do_toot(message: str):
@@ -16,6 +17,7 @@ def _do_toot(message: str):
         api = get_mastodon_api()
         api.update_status(message)
         click.echo(f"transnb-toot:posted:{message}")
+        legacy_tweet(message=message)  # todo - remove when twitter turns my api access off
     else:
         click.echo("transnb-toot:skipped toot")
 
@@ -24,8 +26,10 @@ def get_mastodon_api():
     """
     grab the auth credentials from settings & set up a working API
     """
-    auth = tweepy.OAuth1UserHandler(consumer_key=s.CLIENT_KEY, consumer_secret=s.CLIENT_SECRET, api_base_url=s.BASE_URL)
-    auth.set_access_token(s.ACCESS_TOKEN)
+    auth = tweepy.OAuth1UserHandler(
+        consumer_key=MASTODON.CLIENT_KEY, consumer_secret=MASTODON.CLIENT_SECRET, api_base_url=MASTODON.BASE_URL
+    )
+    auth.set_access_token(MASTODON.ACCESS_TOKEN)
     return tweepy.API(auth)
 
 
